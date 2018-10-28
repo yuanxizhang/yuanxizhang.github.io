@@ -31,7 +31,7 @@ require_relative 'no_starch_press/CLI'
 require_relative 'no_starch_press/topic'
 require_relative 'no_starch_press/book'
 ```
-Step 2: Create a CLI user interface in CLI.rb:
+Step 2: Create a CLI user interface in CLI.rb. This is the controller that asks user to select a topic from a given list and shows the books in that topic the user selected.
 
 ```
 class NoStarchPress::CLI 
@@ -43,27 +43,49 @@ class NoStarchPress::CLI
   end 
   
   def scrape_topic
-    NoStarchPress::Topic.scrape_topics
+    NoStarchPress::Scraper.scrape_topics
   end 
   
   def list_topics
-    @topics = NoStarchPress::Topic.all
-    @topics.each.with_index(1) do |topic, i| 
+    NoStarchPress::Topic.all.each.with_index(1) do |topic, i|
       puts "Topic #{i}. #{topic.name}"
-      
     end
   end
   
-  # define a function called menu
-	# ask for user input "Enter a number for the topic you want, type list to see all topics or type exit to leave: "
-  
+  # define a function called menu that interacts with the user
+  def menu
+    puts "Welcome to No Starch Press - the finest in geek entertaiment!"
+
+    input = nil
+    while input != "exit"
+      puts "Enter a number for the topic you want, type list to see all topics or type exit to leave: "
+      input = gets.strip.downcase
+      if input.to_i > 0 and input.to_i <= NoStarchPress::Topic.all.count
+        NoStarchPress::Scraper.get_books(NoStarchPress::Topic.all[input.to_i - 1]) if NoStarchPress::Topic.all[input.to_i - 1].books.count == 0
+
+        puts "There are #{NoStarchPress::Topic.all[input.to_i - 1].books.count} "+ NoStarchPress::Topic.all[input.to_i - 1].name + " books: "
+
+        NoStarchPress::Topic.all[input.to_i - 1].books.each.with_index(1) do |book, i|
+          puts "Book #{i}. " + book.title
+          puts "           " + book.url
+        end
+      elsif input == "list"
+        list_topics
+      elsif input == "exit"
+        break
+      else
+        puts "Not sure which topic you want, type list or exit: "
+      end
+    end
+  end	
+	
   def goodbye
     puts "See you later for another book search!"
   end
 end
 ```
 
-Step 3: Create a topic class to get the topics in topic.rb, each topic has many books, so the realtionship between topic and book is the "has-many" kind. Topic has three attributes: name, url, an array of books.
+Step 3: Create a topic class to make new topics in topic.rb, each topic has many books, so the realtionship between topic and book is the "has-many" kind of relationship. The Topic object has three attributes: name, url, and an array of books. The array of books are a collection of instances of the Book class that share the same topic.
 
 ```
 class NoStarchPress::Topic
@@ -76,6 +98,7 @@ class NoStarchPress::Topic
     @name = name
     @url = url
     @books = []
+    @@all << self if ( self.name != "Gift Certificates")
   end
   
   def self.all 
@@ -84,36 +107,6 @@ class NoStarchPress::Topic
   
   def self.clear_all 
     @@all.clear
-  end 
-  
-  def self.scrape_topics
-    self.clear_all
-    doc = Nokogiri::HTML(open("https://nostarch.com/"))
-    
-    doc.css("div.views-field span.field-content a").each do |element|
-      topic = self.new
-      topic.name = element.text.strip
-      topic.url = "https://nostarch.com#{element.attribute("href").text.strip}"
-      topic.books = topic.get_books
-      @@all << topic if ( topic.name != "Gift Certificates" and (not @@all.include?(topic)))
-    end 
-    
-    @@all.uniq
-  end 
-  
-  def get_books
-    @books.clear
-    doc = Nokogiri::HTML(open(@url))
-    
-    doc.css("div.product-title a").each do |element|
-      book = NoStarchPress::Book.new
-      book.title = element.text.strip
-      book.url = "https://nostarch.com#{element.attribute("href").text.strip}"
-      book.topic = self if book.topic == nil
-    
-      @books << book unless @books.include?(book)
-    end
-    @books.uniq
   end 
   
   def add_book(book)
@@ -129,7 +122,7 @@ class NoStarchPress::Topic
 end
 ```
 
-Step 4: Build a book class in book.rb, the book class has three attributes: title, url, and topic.
+Step 4: Build a book class to make new books in book.rb. The book object has three attributes: title, url, and topic. the data type for a book's title and url is string, the book's topic is an instance of the Topic class, the book belongs to that topic.
 
 ```
 class NoStarchPress::Book
@@ -151,7 +144,38 @@ class NoStarchPress::Book
   
 end
 ```
-Step 5: Build the Ruby gem:
+
+Step 5: Create a Scraper class that scrape the nostarch.com web site for list of topics and books.
+
+```
+class NoStarchPress::Scraper
+  def self.scrape_topics
+
+    doc = Nokogiri::HTML(open("https://nostarch.com/"))
+
+    doc.css("div.views-field span.field-content a").each do |element|
+      topic = NoStarchPress::Topic.new
+      topic.name = element.text.strip
+      topic.url = "https://nostarch.com#{element.attribute("href").text.strip}"
+    end
+  end
+
+  def self.get_books(topic)
+
+    doc = Nokogiri::HTML(open(topic.url))
+
+    doc.css("div.product-title a").each do |element|
+      book = NoStarchPress::Book.new
+      book.title = element.text.strip
+      book.url = "https://nostarch.com#{element.attribute("href").text.strip}"
+      book.topic = topic
+      topic.books << book
+    end
+  end
+end
+```
+
+Step 6: Build the Ruby gem:
 
 `$ gem build no_starch_press.gemspec`
 
