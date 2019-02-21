@@ -105,7 +105,7 @@ git push heroku master
 ```
 
 Links:
-        - [Sinatra the book](https://sinatra-org-book.herokuapp.com/)
-        - [Deploy your app on Heroku using git](https://devcenter.heroku.com/articles/git)
-        -[Preparing a Codebase for Heroku Deployment](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment)
+* [Sinatra the book](https://sinatra-org-book.herokuapp.com/)
+* [Deploy your app on Heroku using git](https://devcenter.heroku.com/articles/git)
+* [Preparing a Codebase for Heroku Deployment](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment)
 
