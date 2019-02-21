@@ -93,7 +93,7 @@ Step 6. Install Heroku. Create an account at heroku.com. Deploy the app on Herok
 ```
 brew tap heroku/brew && brew install heroku
 heroku login
-
+```
 Enter the email, and password for your Heroku account. 
  
 ```
@@ -109,7 +109,7 @@ git push heroku master
 ```
 
 Links:
--[Sinatra the book](https://sinatra-org-book.herokuapp.com/)
--[Deploy your app on Heroku using git](https://devcenter.heroku.com/articles/git)
--[Preparing a Codebase for Heroku Deployment](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment)
+        - [Sinatra the book](https://sinatra-org-book.herokuapp.com/)
+        - [Deploy your app on Heroku using git](https://devcenter.heroku.com/articles/git)
+        -[Preparing a Codebase for Heroku Deployment](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment)
 
