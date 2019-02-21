@@ -93,10 +93,6 @@ Step 6. Install Heroku. Create an account at heroku.com. Deploy the app on Herok
 ```
 brew tap heroku/brew && brew install heroku
 heroku login
-```
-Enter the email, and password for your Heroku account. 
- 
-```
 heroku create my-sinatra-app
 ```
 
