@@ -13,18 +13,18 @@ We want to allow users to browse the lessons that are available, check out the r
 Here is the user interface of the finished [Booking App](https://book-lessons.herokuapp.com) that delivers the features we want.
 
 ### Tech Stacks we will use for this project:
-##### Back-end: 
+#### Back-end: 
 * Ruby 2.6
 * Rails 5.2
 * Database: PostgreSQL 9.6
 
-##### Front-end:
+#### Front-end:
 * HTML, CSS
 * Bootstrap 
 
 
 ### Create a New Rails Application
-##### Installs Rails and Postgres
+#### Install Rails and Postgres
 Rails requires Ruby version 2.2.2 or later.
 ```
 brew install ruby
@@ -36,7 +36,7 @@ gem install rails
 gem install pg
 ```
 
-##### Create a role/user for Postgres
+#### Create a role/user for Postgres
 Please check [PostgreSQL docs](https://www.postgresql.org/docs/8.1/sql-createrole.html) for detailed instruction.
 
 ```ruby
@@ -45,7 +45,7 @@ CREATE ROLE booking-app WITH CREATEDB LOGIN PASSWORD 'secretpw';
 exit
 ```
 
-##### Create your new Rails app
+#### Create your new Rails app
 By default, Rails application uses a SQLite database for data storage. For this project, we would like to use PostgreSQL for data storage.
 
 ```ruby
@@ -68,7 +68,7 @@ gem 'pg'
 gem 'sqlite3' 
 ```
 
-##### Configure the PostgreSQL Database
+#### Configure the PostgreSQL Database
 
 You want to update the database configuration file: config/database.yml:
 
@@ -105,7 +105,7 @@ rake db:create
 ```
 
 ### The MVC Architecture
-#### Setting up Models and Migration tables
+#### Set up Models and Migration tables
 A model represents the information (data) of the application and the rules to manipulate that data.
 
 ![ER Diagram](https://github.com/yuanxizhang/book-lessons/blob/master/app/assets/images/ER_diagram.png?raw=true)
@@ -184,7 +184,7 @@ We also need to create the migration tables that store the data for all of the m
 rake db:migrate
 ```
 
-#### Setting up Views
+#### Set up Views
 Views represent the user interface of your application. In Rails, views are often HTML files with embedded Ruby code that performs tasks related solely to the presentation of the data. 
 
 Add the Bootstrap CDN links  in app/views/layouts/application.html.erb.
@@ -208,10 +208,10 @@ rails generate rails_admin:install
 ```
 This command will create the '/admin' route and rails_admin.rb in config/initializers.
 
-#### Setting up Routes and Controllers
+#### Set up Routes and Controllers
 In Rails, controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation.
 
-Lets inlcude a few nested routes:
+Lets include a few nested routes:
 ```
 resources :sections do
     resources :skills, only: [:new, :create]
@@ -243,7 +243,7 @@ heroku --version
 ```
 heroku login
 ```
-##### Deploy the Rails app
+#### Deploy the Rails app
 Please check the detailed instructions from [Heroku Dev Center](https://devcenter.heroku.com/articles/getting-started-with-rails5) on how to deploy Rails app on Heroku.
 
 Make sure you are in the directory that contains your Rails app, then create an app on Heroku:
