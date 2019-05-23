@@ -94,9 +94,9 @@ test:
 production:
   <<: *default
   database: booking_production
-  url: <%= ENV['DATABASE_URL'] %>
+  url: ENV['DATABASE_URL'] 
   username: booking-app
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  password: ENV['DATABASE_PASSWORD']
 ```
 Run `bundle install' after you updated your Gemfile. Next you can use a rake command to create your database:
 ```ruby
