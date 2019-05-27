@@ -78,8 +78,8 @@ default: &default
   encoding: unicode
   host: localhost
   url: postgresql://localhost/booking_development?pool=5
-  user: booking
-  password: secretpw
+  user: bookingapp
+  password: yourpassword
   pool: 5
   timeout: 5000
 
@@ -94,9 +94,9 @@ test:
 production:
   <<: *default
   database: booking_production
-  url: ENV['DATABASE_URL'] 
+  url: <% ENV['DATABASE_URL'] %> 
   username: booking-app
-  password: ENV['DATABASE_PASSWORD']
+  password: <% ENV['DATABASE_PASSWORD'] %>
 ```
 Run `bundle install' after you updated your Gemfile. Next you can use a rake command to create your database:
 ```ruby
@@ -155,7 +155,8 @@ class Booking < ApplicationRecord
   belongs_to :lesson
   belongs_to :user
 
-  validates :lesson_id, uniqueness: { scope: :user_id }
+  # in case you only allow each user to book the same lesson ONE TIME, then you can use this line of code to validate:
+  # validates :lesson_id, uniqueness: { scope: :user_id }
 
   def take_lesson
     if self.lesson.seats < 1
