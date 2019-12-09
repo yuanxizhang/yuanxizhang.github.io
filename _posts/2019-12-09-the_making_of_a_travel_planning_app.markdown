@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "The Making of a Travel Planning App"
-date:       2019-12-09 21:44:39 +0000
+date:       2019-12-09 16:44:40 -0500
 permalink:  the_making_of_a_travel_planning_app
 ---
 
