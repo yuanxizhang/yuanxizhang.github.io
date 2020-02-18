@@ -19,8 +19,8 @@ Content Management Software project:
 		Github: https://github.com/yuanxizhang/book-club-literature-log
 
 Web Scraping Project: 
-	A Command Line Interface app that scrapes a book publisher's web site for books from different topics on No Starch Press website.
-	Github: https://github.com/yuanxizhang/no_starch_press
+		A Command Line Interface app that scrapes a book publisher's web site for books from different topics on No Starch Press website.
+		Github: https://github.com/yuanxizhang/no_starch_press
 
 Key skills:
 
@@ -31,12 +31,14 @@ PROFESSIONAL EXPERIENCE
 
 Capital One, Las Vegas, NV
 MIS Analyst (Mar 2012 — Dec 2013)
+
 Part of the Credit Operations Analytics team
-	Developed Key Performance Indicators and scorecards to monitor credit card application volumes and approval rate by portfolio for Credit Operations. Designed SQL queries and wrote SAS programs to obtain credit card application data to improve credit quality. 
+Developed Key Performance Indicators and scorecards to monitor credit card application volumes and approval rate by portfolio for Credit Operations. Designed SQL queries and wrote SAS programs to obtain credit card application data to improve credit quality. 
 
 HSBC Card Services, Las Vegas, NV
 Business Information Analyst (Feb 2004 — Jan 2009)
-	Performed data analysis based on customer experience survey results and developed monthly and quarterly customer satisfaction reports for different call centers and different portfolios, worked on implementing new strategies to improve customer experience.
+
+Performed data analysis based on customer experience survey results and developed monthly and quarterly customer satisfaction reports for different call centers and different portfolios, worked on implementing new strategies to improve customer experience.
 	
 
 EDUCATION 
