@@ -13,7 +13,7 @@ React developers are able to create large web applications which use data that c
 This simple web application will help new developers master programming skills and improve their chances of getting a developer job. The frontend is built with React and Redux. For the backend, I made a Rails REST API with PostgreSQL database. 
 
 ## Demo
-[Quiz Game live demo](https://quiz-box.netlify.app/#/flashcards)
+[Quiz Game live demo](https://quiz-box.netlify.app/)
 
 ## Table of contents
 * [Problem](#Problem)
