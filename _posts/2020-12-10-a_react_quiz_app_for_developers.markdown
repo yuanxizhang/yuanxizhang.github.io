@@ -8,8 +8,9 @@ permalink:  a_react_quiz_app_for_developers
 
 React developers are able to create large web applications which use data that can change over time, without reloading the page. Its main goal is to be fast, simple and scalable. 
 
-## Goal: Build a Quiz App with React + Redux + Rails API
-This simple web application will help new developers master programming skills and improve their chances of getting a developer job. The frontend is built with React and Redux, the backend is a Rails REST API with PostgreSQL as database tool.
+## Goal: build a quiz app with React + Redux
+
+This simple web application will help new developers master programming skills and improve their chances of getting a developer job. The frontend is built with React and Redux. For the backend, I made a Rails REST API with PostgreSQL database. 
 
 ## Demo
 [Quiz Game live demo](https://quiz-box.netlify.app/#/flashcards)
@@ -22,9 +23,10 @@ This simple web application will help new developers master programming skills a
 * [Frontend](#Frontend)
 * [Backend](#backend)
 
-## Problem 
+## Problem
+
 * Problem: New developers need simple tools to learn, to test their knowledge level, and to find a job
-* Solution: Use flashcards to learn, use quiz to test, use job search tool to get a developer job
+* Solution: Use flashcards to learn, use quiz for sel, use job search tool to get a developer job
 
 ## Components
 
@@ -34,6 +36,7 @@ This simple web application will help new developers master programming skills a
 *  The action creators are connected to the Redux store using the connect function in conjunction with mapStatetoProps and mapDispatchToProps. 
 
 ## Technologies
+
 * React 16.13.1
 * Redux 4.0.5
 * Rails 6.0.3
@@ -42,29 +45,30 @@ This simple web application will help new developers master programming skills a
 * axios 0.21.0
 
 ## Features
+
 * Option to practice with the flashcards before taking the quiz
 * Immediate feedback on the answer choice for each question
-* Quiz Progress tracking
-* View quiz result after completing the quiz 
+* Quiz progress tracking
+* View quiz result after completing the test
 * Option to repeat quiz
-* Option to Search specific jobs using the job search form
+* Option to find developer jobs through the Github job listing
 
 ## Backend 
 
-* Create a new Rails app with PostgeSQL database and limit this Rails app to have only API:
+First, create a new Rails app with PostgeSQL database and limit this Rails app to have only API:
 
 ```ruby
 rails new quiz-game-api --database=postgresql --api
 ```
 
-* Next, create a model called Test with name attribute:
+Next, create a model called Test with name attribute:
 
 ```ruby
 rails g model Test name
 
 ```
 
-* Then create a model called Question with question, answer, and test_id attribute:
+Then create a model called Question with question, answer, and test_id attribute:
 
 ```ruby
 rails g model Question question answer test_id:integer
@@ -78,7 +82,7 @@ rails db:create && rails db:migrate
 
 ```
 
-*   Add rack-cors gem to let the request call from cross domain. Add this line into Gemfile:
+Add rack-cors gem to let the request call from cross domain. Add this line into Gemfile:
 
 ```ruby
 
@@ -88,25 +92,28 @@ gem 'rack-cors'
 
 ### Deploying Rails Backend
 
-* Navigate into the directory of your project’s Rails backend: 
+Navigate into the directory of your project’s Rails backend: 
 ```
 cd my-react-app
 ```
-* Sign into Heroku:
+
+Sign into Heroku:
 ```
 heroku login
 ```
-* Create Heroku project
+
+Create Heroku project
  ```
 heroku create new-frontend-app
 ```
-* Initialize heroku git remote
+
+Initialize heroku git remote
 
 ```
 heroku git remote -a  my-react-app
 ```
 
-* Deploy your Rails API on Heroku:
+Deploy your Rails API on Heroku:
 
 ```
 git push heroku master
@@ -119,17 +126,35 @@ git push heroku master
 
 ## Frontend
 
-Before building a React app, install create-react-app:
+Before we start building the React app, let's install create-react-app:
 ```
 npm install -g create-react-app
 ```
+
 Create a new React project:
 ```
 npx create-react-app new-react-frontend
 
 ### Set Up the Store and Reducer and Action Creator
 
-```javascript
+There are three building blocks that Redux is made of:
+
+1.  Action:  Actions are simple JavaScript objects that describe the course of action concerning what happened to the application’s state without specifying how the application state changed.
+2. Reducer:  Reducers are solid functions that present how the application state changes. As soon as the action dispatches to the store, the Reducer starts updating the course of action being passed.
+3.  Store: A Store is an object that holds the functions and state of its application. It is like a hard drive where you can store any data that you want. This object also helps to bring the Reducer and Action together.
+
+Redux is nothing but a JavaScript library used to manage the state of the application and build a user interface. 
+
+Data flow in Redux encompasses all its building blocks along with the connection which combines them together.
+
+When an event has been introduced by the user that cause a change in the original state., the next series of happenings that will take place are as follows:
+
+* First, the event handler function will dispatch an action to the store with the store.dispatch() method.
+* The Reducer will get the dispatched action passed on to it by Redux
+* The store will then save the new state returned by the Reducer
+* As the React components receive the new state from the store, the User interface is updated.
+
+```
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -151,9 +176,14 @@ ReactDOM.render(
 );
 
 ```
-### Set up the reducers
 
-```javascript
+### Set up the reducers.
+
+The reducer function takes two arguments:
+*  The previous state of the app
+*  The dispatched action that will return the new app state. (previousState, action) => newState
+
+```
 const jobsReducer = (state = { jobs: [], loading: false }, action) => {
     switch(action.type) {
       case 'LOADING_JOBS':
@@ -173,27 +203,30 @@ const jobsReducer = (state = { jobs: [], loading: false }, action) => {
     }
   }
    
-  export default jobsReducer;
+ export default jobsReducer;
+```
 
-	```
-	
 ### Build the Container Components
 
-The frondend React app has 3 container components:
+This React app has 3 container components:
 
-1. FlashcardsCaintainer
+1. FlashcardsContainer
 2. QuizGamesContainer
 3. JobsContainer
 
 *  The FlashcardsContainer and GamesContainer uses Hooks as its state management tool.
 *  The JobsContainer uses Redux as its state management tool. 
 
+Add a search form in JobsContainer to filter jobs by job title and location.
 
-### Dispatch the fetchJobs Action in ComponentDidMount function
 
-### Add a job search form in JobsContainer for finding jobs by job title and location.
+## Connect your React App to a REST API
 
-### Install Axios for making an asynchronous fetch request.
+To fetch data from a REST API, you perform an asynchronous fetch request to a REST API which will return the requested information.
+
+I used axios library to get quiz data from the Rails API I built, I used javascript fetch request to get job listings from Github Jobs API.
+
+### Install axios for making an asynchronous fetch request.
 
 Install axios with command: 
 
@@ -201,4 +234,35 @@ Install axios with command:
 npm install axios.
 ```
 
+### Fetching Data into a React Component
+
+If you use Redux to manage the state of your application:
+
+*  Add the `componentDidMount` lifecycle method to a class component.
+*  Import axios 
+*  Add the axios GET request to `componentDidMount` to retrieve the contact data and store it in the App component’s State.
+
+If we use React Hooks to manage the state:
+
+*  Import `useState`, `useEffect`, `useRef` from React library.
+*  Import axios or use javascript fetch function
+*  Declare the variables to hold each part of the state:
+
+``` 
+const [loading, setLoading] = useState(false);
+const [flashcards, setFlashcards] = useState([]);
+```
+*  Add the axios GET request to useEffects function to retrieve the data
+
+The last step is passing the State data to the class component through props: 
+```
+const jobs = this.props.jobs.map(job => <Job key={job.id} job={job} />); 
+```
+If you use React hooks to manage state in a functional component, you can directly use the state related variables in your component:
+
+```
+<FlashcardList flashcards={flashcards} />
+```
+
+Congratulations! You just connected your React app to a remote REST API.
 
