@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "A React Quiz App for Developers"
-date:       2020-12-10 13:31:31 +0000
+date:       2020-12-10 08:31:33 -0500
 permalink:  a_react_quiz_app_for_developers
 ---
 
