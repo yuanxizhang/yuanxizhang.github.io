@@ -57,27 +57,28 @@ This simple web application will help new developers master programming skills a
 
 First, create a new Rails app with PostgeSQL database and limit this Rails app to have only API:
 
-```ruby
+```
 rails new quiz-game-api --database=postgresql --api
+
 ```
 
 Next, create a model called Test with name attribute:
 
-```ruby
+```
 rails g model Test name
 
 ```
 
-Then create a model called Question with question, answer, and test_id attribute:
+Then create a model called Question with question, answer, and test_id attributes:
 
-```ruby
+```
 rails g model Question question answer test_id:integer
 
 ```
 
-* Create the database and run the migration:
+Create the database and run the migration:
 
-```ruby
+```
 rails db:create && rails db:migrate
 
 ```
@@ -85,7 +86,6 @@ rails db:create && rails db:migrate
 Add rack-cors gem to let the request call from cross domain. Add this line into Gemfile:
 
 ```ruby
-
 gem 'rack-cors'
 
 ```
@@ -93,21 +93,24 @@ gem 'rack-cors'
 ### Deploying Rails Backend
 
 Navigate into the directory of your project’s Rails backend: 
+
 ```
 cd my-react-app
 ```
 
 Sign into Heroku:
+
 ```
 heroku login
 ```
 
-Create Heroku project
+Create Heroku project:
+
  ```
 heroku create new-frontend-app
 ```
 
-Initialize heroku git remote
+Initialize heroku git remote:
 
 ```
 heroku git remote -a  my-react-app
@@ -134,7 +137,7 @@ npm install -g create-react-app
 Create a new React project:
 ```
 npx create-react-app new-react-frontend
-
+```
 ### Set Up the Store and Reducer and Action Creator
 
 There are three building blocks that Redux is made of:
@@ -174,37 +177,14 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
 ```
 
-### Set up the reducers.
+### Set up the Reducers and Action Creator
 
 The reducer function takes two arguments:
 *  The previous state of the app
 *  The dispatched action that will return the new app state. (previousState, action) => newState
 
-```
-const jobsReducer = (state = { jobs: [], loading: false }, action) => {
-    switch(action.type) {
-      case 'LOADING_JOBS':
-        return {
-          ...state,
-          jobs: [...state.jobs],
-          loading: true
-        }
-      case 'ADD_JOBS':
-        return {
-          ...state,
-          jobs: action.jobs,
-          loading: false
-        }
-      default:
-        return state;
-    }
-  }
-   
- export default jobsReducer;
-```
 
 ### Build the Container Components
 
@@ -234,35 +214,37 @@ Install axios with command:
 npm install axios.
 ```
 
-### Fetching Data into a React Component
+### Fetch Data into a React Component
 
 If you use Redux to manage the state of your application:
 
 *  Add the `componentDidMount` lifecycle method to a class component.
-*  Import axios 
-*  Add the axios GET request to `componentDidMount` to retrieve the contact data and store it in the App component’s State.
+*  Import axios or use javascript fetch function
+*  Add the data fetching function 'axios.get()' to `componentDidMount` method to retrieve the data and store it in the App component’s State.
 
-If we use React Hooks to manage the state:
+If you use React Hooks to manage the state:
 
 *  Import `useState`, `useEffect`, `useRef` from React library.
 *  Import axios or use javascript fetch function
-*  Declare the variables to hold each part of the state:
 
+Declare the variables to hold each part of the state:
 ``` 
 const [loading, setLoading] = useState(false);
-const [flashcards, setFlashcards] = useState([]);
 ```
-*  Add the axios GET request to useEffects function to retrieve the data
 
-The last step is passing the State data to the class component through props: 
+Add the axios.get() request to useEffects function to retrieve the data.
+
+### Display the data in your user interface
+
+The last step is passing the State data to the class component through props. 
 ```
-const jobs = this.props.jobs.map(job => <Job key={job.id} job={job} />); 
+{this.props.loading && <h4>Loading...</h4>}
 ```
+
 If you use React hooks to manage state in a functional component, you can directly use the state related variables in your component:
-
 ```
-<FlashcardList flashcards={flashcards} />
+{loading && <h4>Loading...</h4>}
 ```
 
-Congratulations! You just connected your React app to a remote REST API.
+Congratulations! You just connected your React app to the remote REST API.
 
