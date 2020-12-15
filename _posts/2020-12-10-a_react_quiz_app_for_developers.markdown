@@ -26,7 +26,7 @@ This simple web application will help new developers master programming skills a
 ## Problem
 
 * Problem: New developers need simple tools to learn, to test their knowledge level, and to find a job
-* Solution: Use flashcards to learn, use quiz for sel, use job search tool to get a developer job
+* Solution: Use flashcards to learn, use quiz for assessment, use job search tool to get a developer job
 
 ## Components
 
@@ -51,9 +51,10 @@ This simple web application will help new developers master programming skills a
 * Quiz progress tracking
 * View quiz result after completing the test
 * Option to repeat quiz
+* Option to create new coding challenges, and post solutions
 * Option to find developer jobs through the Github job listing
 
-## Backend 
+## Rails Backend 
 
 First, create a new Rails app with PostgeSQL database and limit this Rails app to have only API:
 
@@ -62,7 +63,7 @@ rails new quiz-game-api --database=postgresql --api
 
 ```
 
-Next, create a model called Test with name attribute:
+Next, create a model called Test with a name attribute:
 
 ```
 rails g model Test name
@@ -72,8 +73,35 @@ rails g model Test name
 Then create a model called Question with question, answer, and test_id attributes:
 
 ```
-rails g model Question question answer test_id:integer
+rails g model Question question answer explain test_id:integer
 
+```
+ create a model called Option with an item attribute:
+
+```
+rails g model Option item
+
+```
+The relationship is test has many questions, the question has many options.
+```
+class Test < ApplicationRecord
+    has_many :questions, dependent: :destroy
+    validates :name, presence: true
+    accepts_nested_attributes_for :questions
+end
+
+class Question < ApplicationRecord
+    belongs_to :test
+    has_many :options, dependent: :destroy
+    validates :question, presence: true
+    validates :answer, presence: true
+    accepts_nested_attributes_for :options
+end
+
+class Option < ApplicationRecord
+    belongs_to :question
+    validates :item, presence: true
+end
 ```
 
 Create the database and run the migration:
@@ -82,6 +110,7 @@ Create the database and run the migration:
 rails db:create && rails db:migrate
 
 ```
+Build the controllers for all of the models.
 
 Add rack-cors gem to let the request call from cross domain. Add this line into Gemfile:
 
@@ -90,7 +119,21 @@ gem 'rack-cors'
 
 ```
 
-### Deploying Rails Backend
+Update cors.rb fiel in config/initializer directory to allow any origons:!
+
+```
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
+
+    resource '*',
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+end
+```
+
+### Deploying Rails Backend to Heroku
 
 Navigate into the directory of your project’s Rails backend: 
 
@@ -127,7 +170,7 @@ git push heroku master
 
 
 
-## Frontend
+## React Frontend
 
 Before we start building the React app, let's install create-react-app:
 ```
@@ -136,8 +179,9 @@ npm install -g create-react-app
 
 Create a new React project:
 ```
-npx create-react-app new-react-frontend
+npx create-react-app my-quiz-game
 ```
+
 ### Set Up the Store and Reducer and Action Creator
 
 There are three building blocks that Redux is made of:
@@ -145,6 +189,8 @@ There are three building blocks that Redux is made of:
 1.  Action:  Actions are simple JavaScript objects that describe the course of action concerning what happened to the application’s state without specifying how the application state changed.
 2. Reducer:  Reducers are solid functions that present how the application state changes. As soon as the action dispatches to the store, the Reducer starts updating the course of action being passed.
 3.  Store: A Store is an object that holds the functions and state of its application. It is like a hard drive where you can store any data that you want. This object also helps to bring the Reducer and Action together.
+
+![app data flow](https://github.com/yuanxizhang/quiz-game-frontend/blob/master/public/img/diagram.png)
 
 Redux is nothing but a JavaScript library used to manage the state of the application and build a user interface. 
 
@@ -156,6 +202,8 @@ When an event has been introduced by the user that cause a change in the origina
 * The Reducer will get the dispatched action passed on to it by Redux
 * The store will then save the new state returned by the Reducer
 * As the React components receive the new state from the store, the User interface is updated.
+
+
 
 ```
 import React from 'react';
@@ -179,6 +227,10 @@ ReactDOM.render(
 );
 ```
 
+1. First we built the index.js file, it calls the App component: <App />.
+2. Then we built the App.js file, it sets up the routes, and provide the links to the container components.
+3. 
+
 ### Set up the Reducers and Action Creator
 
 The reducer function takes two arguments:
@@ -188,17 +240,17 @@ The reducer function takes two arguments:
 
 ### Build the Container Components
 
-This React app has 3 container components:
+This React app is a bundle of four simple apps:
 
-1. FlashcardsContainer
-2. QuizGamesContainer
-3. JobsContainer
+1. The Flashcard app
+2. The Quiz app
+3. The Job Ssearch app
+4. The Problems and Solutions app
 
-*  The FlashcardsContainer and GamesContainer uses Hooks as its state management tool.
-*  The JobsContainer uses Redux as its state management tool. 
+*  The Flashcard app, the Quiz app, and the Problems and Solutions app use React with Hooks as its state management tool.
+*  The Job Search app uses React with Redux as its state management tool. 
 
-Add a search form in JobsContainer to filter jobs by job title and location.
-
+There is a JobsSearch component in JobsContainer to filter jobs by job title and location. 
 
 ## Connect your React App to a REST API
 
