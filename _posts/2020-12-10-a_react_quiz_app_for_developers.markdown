@@ -25,13 +25,13 @@ This simple web application will help new developers master programming skills a
 
 ## Problem
 
-* Problem: New developers need simple tools to learn, to test their knowledge level, and to find a job
-* Solution: Use flashcards to learn, use quiz for assessment, use job search tool to get a developer job
+* Problem: new developers need simple tools to learn, to test their knowledge level, and to find a job
+* Solution: use flashcards to learn, use quiz for assessment, use problem and solutions to prepare for coding challenges during the interview, use job search tool to get a developer job,
 
 ## Components
 
 *  The App component is a container with React Router. It has a navbar that links to routes paths.
-*  The FlashcardsContainer and QuizGameContainer calls TestDataService functions which use axios to make HTTP requests to and receive responses from Rails API.
+*  The FlashcardsContainer, QuizGameContainer and ProblemsContainer calls DataService functions which use axios to make HTTP requests to and receive responses from Rails API.
 *  The JobsContainer uses Redux-Thunk middleware to make an asynchronous fetch request to Github Jobs API using action creator functions. 
 *  The action creators are connected to the Redux store using the connect function in conjunction with mapStatetoProps and mapDispatchToProps. 
 
@@ -51,12 +51,12 @@ This simple web application will help new developers master programming skills a
 * Quiz progress tracking
 * View quiz result after completing the test
 * Option to repeat quiz
-* Option to create new coding challenges, and post solutions
-* Option to find developer jobs through the Github job listing
+* Option to create new coding challenges and new solutions
+* Option to search developer jobs through the Github job listing
 
-## Rails Backend 
+## Backend 
 
-First, create a new Rails app with PostgeSQL database and limit this Rails app to have only API:
+First, create a new Rails API app with PostgeSQL database:
 
 ```
 rails new quiz-game-api --database=postgresql --api
@@ -70,7 +70,7 @@ rails g model Test name
 
 ```
 
-Then create a model called Question with question, answer, and test_id attributes:
+Then create a model called Question with question, answer, and explain attributes:
 
 ```
 rails g model Question question answer explain test_id:integer
@@ -79,7 +79,7 @@ rails g model Question question answer explain test_id:integer
  create a model called Option with an item attribute:
 
 ```
-rails g model Option item
+rails g model Option item question_id:integer
 
 ```
 The relationship is test has many questions, the question has many options.
@@ -170,7 +170,7 @@ git push heroku master
 
 
 
-## React Frontend
+## Frontend
 
 Before we start building the React app, let's install create-react-app:
 ```
@@ -189,8 +189,6 @@ There are three building blocks that Redux is made of:
 1.  Action:  Actions are simple JavaScript objects that describe the course of action concerning what happened to the application’s state without specifying how the application state changed.
 2. Reducer:  Reducers are solid functions that present how the application state changes. As soon as the action dispatches to the store, the Reducer starts updating the course of action being passed.
 3.  Store: A Store is an object that holds the functions and state of its application. It is like a hard drive where you can store any data that you want. This object also helps to bring the Reducer and Action together.
-
-![app data flow](https://github.com/yuanxizhang/quiz-game-frontend/blob/master/public/img/diagram.png)
 
 Redux is nothing but a JavaScript library used to manage the state of the application and build a user interface. 
 
@@ -227,9 +225,9 @@ ReactDOM.render(
 );
 ```
 
-1. First we built the index.js file, it calls the App component: <App />.
-2. Then we built the App.js file, it sets up the routes, and provide the links to the container components.
-3. 
+1. Step one, we build the index.js file, it creates a global store and calls the App component: <App />.
+2. Step two, we build the App.js file, it sets up the routes, and provide the links to the container components. Since App.js is the root component, and every other component is the child component, the state we defined is available to all components.
+3.  Step three, we build the container components.
 
 ### Set up the Reducers and Action Creator
 
@@ -245,12 +243,12 @@ This React app is a bundle of four simple apps:
 1. The Flashcard app
 2. The Quiz app
 3. The Job Ssearch app
-4. The Problems and Solutions app
+4. The Coding Problems and Solutions app
 
-*  The Flashcard app, the Quiz app, and the Problems and Solutions app use React with Hooks as its state management tool.
-*  The Job Search app uses React with Redux as its state management tool. 
+*  The Flashcard app, the Quiz app, and the Problems and Solutions app use Hooks as its state management tool.
+*  The Job Search app uses Redux as its state management tool. 
 
-There is a JobsSearch component in JobsContainer to filter jobs by job title and location. 
+When the container components are ready, we add child components inside the each container components. We want to add a JobsSearch component in JobsContainer to filter jobs by job title and location. 
 
 ## Connect your React App to a REST API
 
@@ -281,7 +279,7 @@ If you use React Hooks to manage the state:
 
 Declare the variables to hold each part of the state:
 ``` 
-const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useSta
 ```
 
 Add the axios.get() request to useEffects function to retrieve the data.
