@@ -29,6 +29,9 @@ This simple web application will help new developers master programming skills a
 * Solution: use flashcards to learn, use quiz for assessment, use problem and solutions to prepare for coding challenges during the interview, use job search tool to get a developer job,
 
 ## Components
+<img src="https://github.com/yuanxizhang/quiz-game-frontend/blob/master/public/img/diagram.png"
+     alt="React Components"
+     style="float: left; margin-right: 10px;" />
 
 *  The App component is a container with React Router. It has a navbar that links to routes paths.
 *  The FlashcardsContainer, QuizGameContainer and ProblemsContainer calls DataService functions which use axios to make HTTP requests to and receive responses from Rails API.
