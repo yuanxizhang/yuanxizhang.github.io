@@ -190,7 +190,7 @@ npx create-react-app my-quiz-game
 There are three building blocks that Redux is made of:
 
 1.  Action:  Actions are simple JavaScript objects that describe the course of action concerning what happened to the application’s state without specifying how the application state changed.
-2. Reducer:  Reducers are solid functions that present how the application state changes. As soon as the action dispatches to the store, the Reducer starts updating the course of action being passed.
+2. Reducer:  Reducers are pure functions that present how the application state changes. As soon as the action dispatches to the store, the Reducer starts updating the course of action being passed.
 3.  Store: A Store is an object that holds the functions and state of its application. It is like a hard drive where you can store any data that you want. This object also helps to bring the Reducer and Action together.
 
 Redux is nothing but a JavaScript library used to manage the state of the application and build a user interface. 
