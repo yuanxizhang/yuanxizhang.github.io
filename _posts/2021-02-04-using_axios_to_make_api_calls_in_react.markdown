@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Using Axios to make API calls in React"
-date:       2021-02-04 07:15:56 +0000
+date:       2021-02-04 02:15:57 -0500
 permalink:  using_axios_to_make_api_calls_in_react
 ---
 
@@ -12,18 +12,19 @@ Axios makes it easy to send asynchronous HTTP request to REST endpoints and perf
 
 ## Add Axios to your React project
 
-#### Create a new app.
+Create a new app.
 ```npx create-react-app online-store
 ```
-#### Move inside our new project.
+Move inside our new project.
 ```cd one-small-shop
 ```
-#### Install dependencies.
+Install dependencies.
 ```npm install axios
 ```
-#### Start the project.
+Start the project.
+```
 npm start
-
+```
 
 ## Fetch data with GET request 
 ### Data fetching in a class component
