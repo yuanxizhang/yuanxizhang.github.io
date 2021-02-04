@@ -21,6 +21,7 @@ npx create-react-app my-online-store
 cd my-online-store
 
 * Install dependencies.
+
 npm install axios
 
 * Start the project.
