@@ -15,12 +15,15 @@ Axios makes it easy to send asynchronous HTTP request to REST endpoints and perf
 Create a new app.
 ```npx create-react-app my-online-store
 ```
+
 Move inside our new project.
 ```cd my-online-store
 ```
+
 Install dependencies.
 ```npm install axios
 ```
+
 Start the project.
 ```
 npm start
