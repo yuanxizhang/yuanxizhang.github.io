@@ -1,17 +1,22 @@
 Yancy Zhang
 San Francisco Bay Area
 (510) 570-9170
-yuanxi.zhang@gmail.com
+yancyzhang@protonmail.com
 
 TECHNICAL SKILLS
 
-Languages: Ruby, Python, Javascript, SQL, SAS
-Database systems: IBM DB2, PostgreSQL
+Languages: Ruby, Python, Javascript, 
+Web Technologies: React, Ruby on Rails, Node.js, Express.js
+Databases: PostgreSQL, MongoDB
 
 SOFTWARE PROJECTS
 
+Online Quiz Project: 
+		An online quiz app that let users view flash cards, take a quiz, ask questions, and answer other people's questions
+		Github: https://github.com/yuanxizhang/quiz-game-frontend
+
 Travel Project:
-		A group travel app that let users browse tour offers, uopdate travel bucket lists.
+		A group travel app that let users browse tour offers, make and update travel bucket lists.
 		Github: https://github.com/yuanxizhang/travel-project
 
 Lesson Booking Project: 
@@ -30,31 +35,35 @@ Web Scraping Project:
 
 PROFESSIONAL EXPERIENCE
 
+AMERICAN HORSE PROJECT
+Software Developer
+Work with a team of designers and developer building a web application using React, Express.js, Node.js, and MongoDB.
+
 FLATIRON SCHOOL
-Software Engineering Prugram Trainee (September 2018 — Present)
-		Built a group travel application with a JavaScript frontend and a Rails API backend to help users find the best travel deals, built an event booking application in Ruby on Rails that help users book lessons that improve their skills.
+Software Engineering Student (Feb 2019 — Feb 2021)
+Designed and developed web applications using React and JavaScript for frontend, PostgreSQL and Ruby on Rails for the backend.
 
 Yu Ming Charter School, Oakland, CA
-After Schhol Staff (September 2019 — Present)
-		Implement learning activities for the purpose of improving students' academic and social skills, Assist students with lesson assignments, tutor middle school students on writing English and Chinese essays.
+After School Program Teacher (September 2019 — March 2020)
+Implement learning activities for the purpose of improving students' academic and social skills, Assist students with lesson assignments, tutor middle school students on writing English and Chinese essays.
 
 Friends of Albany Library, Albany, CA
 Volunteer Board Member (March 2014 — Present)
-		Review annual budget, prepare  1099-MISC  Tax Forms, file state and federal tax returns for the non-profit. 
+Review annual budget, prepare  1099-MISC  Tax Forms, file state and federal tax returns for the non-profit. 
 
 Capital One, Las Vegas, NV
 MIS Analyst (March 2012 — December 2013)
-Part of the Credit Operations Analytics team
-
-		Developed Key Performance Indicators and scorecards to monitor credit card application volumes and approval rate by portfolio for Credit Operations. Designed SQL queries and wrote SAS programs to obtain credit card application data to improve credit quality. 
+Developed Key Performance Indicators and scorecards to monitor credit card application volumes and approval rate by portfolio for Credit Operations. Designed SQL queries and wrote SAS programs to obtain credit card application data to improve credit quality. 
 
 HSBC Card Services, Las Vegas, NV
 Business Information Analyst (February 2004 — January 2009)
-
-		Performed data analysis based on customer experience survey results and developed monthly and quarterly customer satisfaction reports for different call centers and different portfolios, worked on implementing new strategies to improve customer experience.
+Wrote SAS programs, performed data analysis based on customer experience survey results and developed monthly and quarterly customer satisfaction reports for different call centers and different portfolios, worked on implementing new strategies to improve customer experience.
 	
 
 EDUCATION 
+
+Flatiron School
+Software Engineering Program
 
 UNIVERSITY OF WASHINGTON, Seattle, WA
 Coursework completed towards a Master of Arts degree in Sociology
