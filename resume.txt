@@ -36,7 +36,7 @@ Web Scraping Project:
 PROFESSIONAL EXPERIENCE
 
 AMERICAN HORSE PROJECT
-Software Developer
+Software Developer (Apr 2021 - present)
 Work with a team of designers and developer building a web application using React, Express.js, Node.js, and MongoDB.
 
 FLATIRON SCHOOL
