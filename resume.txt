@@ -5,9 +5,9 @@ yancyzhang@protonmail.com
 
 TECHNICAL SKILLS
 
-Languages: Ruby, Python, Javascript, 
+Languages: Python, Ruby, Javascript, 
 Web Technologies: React, Ruby on Rails, Node.js, Express.js
-Databases: PostgreSQL, MongoDB
+Databases: PostgreSQL, MongoDB, SQLite
 
 SOFTWARE PROJECTS
 
@@ -35,39 +35,36 @@ Web Scraping Project:
 
 PROFESSIONAL EXPERIENCE
 
-AMERICAN HORSE PROJECT
-Software Developer (Apr 2021 - present)
-Work with a team of designers and developer building a web application using React, Express.js, Node.js, and MongoDB.
+Software Engineer Apprentice,  Code The Dream, Remote, 06/2021 - present
+* Build new features and improve existing components for Vamos Outreach application. 
+* Write unit tests, conduct code reviews, add and test REST API endpoints.
 
-FLATIRON SCHOOL
-Software Engineering Student (Feb 2019 — Feb 2021)
-Designed and developed web applications using React and JavaScript for frontend, PostgreSQL and Ruby on Rails for the backend.
+Software Developer, American Horse Project, remote, 04/2021 - 06/2021
+* Worked with designers and other developers on a web application for horse adoption.
+* The application was built using React, Express.js, Node.js, and MongoDB.
 
-Yu Ming Charter School, Oakland, CA
-After School Program Teacher (September 2019 — March 2020)
-Implement learning activities for the purpose of improving students' academic and social skills, Assist students with lesson assignments, tutor middle school students on writing English and Chinese essays.
+After School Program Teacher, Yu Ming Charter School, Oakland, CA, September 2019 — March 2020
+* Implemented learning activities for the purpose of improving students' academic and social skills.
+* Assisted students with lesson assignments, tutor middle school students on writing essays.
 
-Friends of Albany Library, Albany, CA
-Volunteer Board Member (March 2014 — Present)
-Review annual budget, prepare  1099-MISC  Tax Forms, file state and federal tax returns for the non-profit. 
+Treasurer and Board Member, Friends of Albany Library, Albany, CA, March 2014 — Present
+* Review annual budget, prepare monthly and annual financial reports, file state and federal tax returns for the non-profit. 
 
-Capital One, Las Vegas, NV
-MIS Analyst (March 2012 — December 2013)
-Developed Key Performance Indicators and scorecards to monitor credit card application volumes and approval rate by portfolio for Credit Operations. Designed SQL queries and wrote SAS programs to obtain credit card application data to improve credit quality. 
+MIS Analyst, Capital One, Las Vegas, NV, March 2012 — December 2013
+* Developed Key Performance Indicators and scorecards to monitor credit card application volumes and approval rate by portfolio for Credit Operations. Designed SQL queries and wrote SAS programs to obtain credit card application data to improve credit quality. 
 
-HSBC Card Services, Las Vegas, NV
-Business Information Analyst (February 2004 — January 2009)
-Wrote SAS programs, performed data analysis based on customer experience survey results and developed monthly and quarterly customer satisfaction reports for different call centers and different portfolios, worked on implementing new strategies to improve customer experience.
+Business Information Analyst, HSBC Card Services, Las Vegas, NV, February 2004 — January 2009
+* Wrote SAS programs, performed data analysis based on customer experience survey results and developed monthly and quarterly customer satisfaction reports for different call centers and different portfolios, worked on implementing new strategies to improve customer experience.
 	
 
 EDUCATION 
 
 Flatiron School
-Software Engineering Program
+Software Engineering Immersive Program
 
-UNIVERSITY OF WASHINGTON, Seattle, WA
+University OF Washington, Seattle, WA
 Coursework completed towards a Master of Arts degree in Sociology
 
-RENMIN UNIVERSITY OF CHINA, Beijing, CHINA
+Renmin University of China, Beijing, CHINA
 Master of Arts in Economics
 Bachelor of Arts in Economics
