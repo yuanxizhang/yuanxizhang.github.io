@@ -5,7 +5,7 @@ yancyzhang@protonmail.com
 
 TECHNICAL SKILLS
 
-Languages: Python, Ruby, Javascript, 
+Programming Languages: Python, Ruby, Javascript, 
 Web Technologies: React, Ruby on Rails, Node.js, Express.js
 Databases: PostgreSQL, MongoDB, SQLite
 
@@ -32,10 +32,9 @@ Web Scraping Project:
 		A CLI app that scrapes No Starch Press book publisher's web site for books by different topics.
 		Github: https://github.com/yuanxizhang/no_starch_press
 
-
 PROFESSIONAL EXPERIENCE
 
-Software Engineer Apprentice,  Code The Dream, Remote, 06/2021 - present
+Software Engineer Apprentice,  Code The Dream, Remote, 06/2021 - Present
 * Build new features and improve existing components for Vamos Outreach application. 
 * Write unit tests, conduct code reviews, add and test REST API endpoints.
 
@@ -56,7 +55,6 @@ MIS Analyst, Capital One, Las Vegas, NV, March 2012 — December 2013
 Business Information Analyst, HSBC Card Services, Las Vegas, NV, February 2004 — January 2009
 * Wrote SAS programs, performed data analysis based on customer experience survey results and developed monthly and quarterly customer satisfaction reports for different call centers and different portfolios, worked on implementing new strategies to improve customer experience.
 	
-
 EDUCATION 
 
 Flatiron School
